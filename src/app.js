@@ -22,5 +22,12 @@ app.get('/', (req, res) => res.render('index', {title: 'Account Summary', accoun
 
 // Savings Account Route 
 app.get('/savings',(req, res) => res.render('account', {account: accounts.savings}));
+
+// Checking Account Route 
+app.get('/checking',(req, res) => res.render('account', {account: accounts.checking}));
+
+// Credit Account Route 
+app.get('/credit',(req, res) => res.render('account', {account: accounts.credit}));
+
 // bind the Server with the Port
 app.listen(3000, () => console.log('PS Project Running on Port 3000!'));
