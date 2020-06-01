@@ -11,9 +11,7 @@ app.set('view engine', 'ejs');
 // bind the Public (CSS, Js) with the Server
 app.use(express.static(path.join(__dirname, '/public/')));
 
-const accountData =fs.readFileSync('src/json/accounts.json', {encoding: 'ut8'}, (result) => {
-    return  JSON.parse(result);
-});
+fs.readFileSync('src/json/accounts.json', {encoding: 'ut8'});
 
 
 // first Route '/'
