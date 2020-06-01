@@ -18,7 +18,7 @@ const userData = fs.readFileSync('src/json/users.json', {encoding:'utf8', flag:'
 const users = JSON.parse(userData);
 
 // first Route '/'
-app.get('/', (req, res) => res.render('index', {title: 'Index'}));
+app.get('/', (req, res) => res.render('index', {title: 'Account Summary', accounts: accounts}));
 
 // bind the Server with the Port
 app.listen(3000, () => console.log('PS Project Running on Port 3000!'));
