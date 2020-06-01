@@ -11,8 +11,11 @@ app.set('view engine', 'ejs');
 // bind the Public (CSS, Js) with the Server
 app.use(express.static(path.join(__dirname, '/public/')));
 
-fs.readFileSync('src/json/accounts.json', {encoding: 'ut8'});
+const accountData = fs.readFileSync('src/json/accounts.json', {encoding:'utf8', flag:'r'});
+const accounts = JSON.parse(accountData);
 
+const userData = fs.readFileSync('src/json/users.json', {encoding:'utf8', flag:'r'});
+const users = JSON.parse(userData);
 
 // first Route '/'
 app.get('/', (req, res) => res.render('index', {title: 'Index'}));
