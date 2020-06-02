@@ -36,9 +36,9 @@ app.get('/credit',(req, res) => res.render('account', {account: accounts.credit}
 // Transfer Route
 app.get('/transfer', (req, res) => res.render('transfer'));
 app.post('/transfer', (req, res) => {
-    if (!req.body) {
-        accounts[req.body.form].balance = (accounts[req.body.form].balance - req.body.amount);
-        accounts[req.body.to].balance = (parseInt(accounts[req.body.to].balance) + parseInt(req.body.amount, 10));
+    if (req.body.form && req.body.to) {
+        accounts[req.body.form].balance = accounts[req.body.form].balance - req.body.amount;
+        accounts[req.body.to].balance = parseInt(accounts[req.body.to].balance) + parseInt(req.body.amount, 10);
     }
     const accountsJSON = JSON.stringify(accounts, null, 4);
     fs.writeFileSync(path.join(__dirname, 'json/accounts.json'), accountsJSON, 'utf8');
