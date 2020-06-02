@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 // bind the Public (CSS, Js) with the Server
 app.use(express.static(path.join(__dirname, '/public/')));
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const accountData = fs.readFileSync('src/json/accounts.json', {encoding:'utf8', flag:'r'});
