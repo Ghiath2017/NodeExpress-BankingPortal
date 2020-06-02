@@ -38,8 +38,12 @@ app.get('/profile',(req, res) => res.render('profile', {user: users[0]}));
 
 // Transfer Route
 app.get('/transfer', (req, res) => res.render('transfer'));
-app.post('/transfer', (re, res) => {
-    
+app.post('/transfer', (req, res) => {
+    accounts[req.body.form].balance = accounts[req.body.form].balance - req.body.amount;
+    accounts[req.body.to].balance = parseInt(accounts[req.body.to].balance) + parseInt(req.body.amount, 10);
+    const accountsJSON = JSON.stringify(accounts, null, 4);
+    fs.writeFileSync(path.join(__dirname, 'json/accounts.json'), accountsJSON, 'utf8');
+    res.render('transfer', { message: 'Transfer Completed'})
 })
 
 // bind the Server with the Port
