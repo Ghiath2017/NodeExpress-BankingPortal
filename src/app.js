@@ -38,6 +38,9 @@ app.get('/profile',(req, res) => res.render('profile', {user: users[0]}));
 
 // Transfer Route
 app.get('/transfer', (req, res) => res.render('transfer'));
+app.post('/transfer', (re, res) => {
+    
+})
 
 // bind the Server with the Port
 app.listen(3000, () => console.log('PS Project Running on Port 3000!'));
